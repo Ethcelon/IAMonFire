@@ -1,0 +1,10 @@
+.AuctionThumbnail img {
+    margin-bottom: 1em;
+    width: 75px;
+    height: 75px;
+}
+
+.AuctionMainPhoto {
+    width: 1024px;
+    height: 576px;
+}

@@ -4,7 +4,9 @@ import { Grid, Col, Row, Image } from 'react-bootstrap';
 import './Auction.css';
 
 import BidList from './BidList/BidList.js';
-import BidForm from './BidForm/BidForm.js'
+import BidForm from './BidForm/BidForm.js';
+import Photobox from './Photobox/Photobox.jsx';
+import Description from './Description/Description.jsx';
 
 export default class Auction extends Component {
 
@@ -30,15 +32,8 @@ export default class Auction extends Component {
 
         <Row className="AuctionBody">
           <Col xs={9} md={9} className="AuctionBodyLeft">
-            <Row>
-              <Col xs={12} md={12} className="AuctionPhotobox">
-                <Image src="https://via.placeholder.com/1024x400" rounded />
-              </Col>
-              <Col xs={12} md={12} className="AuctionDescription">
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a neque pellentesque, accumsan eros in, malesuada arcu. Duis scelerisque porttitor justo. Sed vitae erat id mi interdum finibus sit amet nec eros. Sed dapibus, ligula id molestie tincidunt, lorem sapien tristique dui, vel ultricies massa turpis et diam. Sed porta accumsan turpis. Suspendisse non euismod risus. Suspendisse potenti. Aliquam pulvinar, sapien a pellentesque dignissim, diam tellus fringilla nisl, mollis pellentesque enim lorem sed sapien. Vestibulum ut volutpat enim. Pellentesque a ex eu ex rutrum blandit. Pellentesque vel lacinia justo. Mauris vulputate justo quis congue scelerisque. In hac habitasse platea dictumst.
-                 </p>
-              </Col>
-            </Row>
+            <Photobox images={["https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season21/season21_ep04_ss01.jpg","https://i.ytimg.com/vi/NiEABxi8G4U/maxresdefault.jpg","https://media.comicbook.com/2018/09/legendary-lets-go-1134651-640x320.jpeg","https://via.placeholder.com/1024x576"]}/>
+            <Description />
           </Col>
           <Col xs={3} md={3}  className="AuctionBodyRight">
             <BidList data={[]} />
