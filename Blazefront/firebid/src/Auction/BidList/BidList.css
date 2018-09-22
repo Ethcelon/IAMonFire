@@ -8,16 +8,22 @@
 }
 
 .BidUserPicture {
-
+    margin-left: 0;
+    float: left;
 }
 
 .BidUserName {
     margin-left: 1em;
+    float: left;
     font-size: 1.5em;
+    height: 100%;
+    padding: 10px;
 }
 
 .BidAmount {
     float: right;
     font-size: 1.5em;
     margin-right: 1em;
+    height: 100%;
+    padding: 10px;
 }

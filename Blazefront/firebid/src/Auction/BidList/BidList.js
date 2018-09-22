@@ -9,15 +9,15 @@ class Bid extends Component {
     return(
      <Col md={12} xs={12}>
         <div className="BidItem">
-          <span className="BidUserPicture">
+          <div className="BidUserPicture">
             <Image src="https://via.placeholder.com/50x50" />
-          </span>
-          <span className="BidUserName">
+          </div>
+          <div className="BidUserName">
             {this.props.user}
-          </span>
-          <span className="BidAmount">
+          </div>
+          <div className="BidAmount">
             {this.props.amount}
-          </span>
+          </div>
         </div>
      </Col>
     )
