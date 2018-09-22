@@ -9,24 +9,29 @@ app = Flask(__name__)
 def accounts():
     if not request.json:
         abort(400)
-    return (json.dumps(request.json['age']))
+
+    balance_json = json.dumps(request.get_json(request.json))
+    bjson = json.loads(balance_json)
+    bjson_str = (str(bjson['Data']['Balance'][0]['Amount']))
+    return bjson_str
 
 
-@app.route('/requests', methods=['GET', 'POST'])
-def get_request():
-    url = "https://as.aspsp.ob.forgerock.financial/oauth2/.well-known/openid-configuration"
-    headers = {
-    'Cache-Control': "no-cache",
-    'Pragma': "no-cache",
-    'Cookie': "cookiename=werewrw;cook",
-    'Postman-Token': "0fe95cca-a949-428e-88e9-19da3e190ad0"
-    }
 
-    response = requests.request("GET", url, headers=headers)
+# @app.route('/requests', methods=['GET', 'POST'])
+# def get_request():
+#     url = "https://as.aspsp.ob.forgerock.financial/oauth2/.well-known/openid-configuration"
+#     headers = {
+#     'Cache-Control': "no-cache",
+#     'Pragma': "no-cache",
+#     'Cookie': "cookiename=werewrw;cook",
+#     'Postman-Token': "0fe95cca-a949-428e-88e9-19da3e190ad0"
+#     }
 
-    response_text = str(response.text)
+#     response = requests.request("GET", url, headers=headers)
+
+#     response_text = str(response.text)
     
-    return (jsonify(response_text))
+#     return (jsonify(response_text))
 
 
 
