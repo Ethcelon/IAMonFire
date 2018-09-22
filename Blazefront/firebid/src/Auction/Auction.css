@@ -1,7 +1,8 @@
 .FireAuction {
   margin: 2em;
-  border: 1px inset #3f3f3f;
   padding: 1em;
+  padding-top: 3em;
+  margin-top: 2em;
 }
 
 .AuctionTitle {

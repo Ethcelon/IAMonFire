@@ -25,7 +25,7 @@ export default class Auction extends Component {
         <Row className="AuctionTitle">
           <Col md={12} xs={12}>
             <div>
-              <span className="AuctionHeading">Crown Jwell</span><span className="AmountHeading">$123</span>
+              <span className="AuctionHeading">Crown Jewels</span><span className="AmountHeading">$123</span>
             </div>
           </Col>
         </Row>
