@@ -1,0 +1,45 @@
+.FireAuction {
+  margin: 2em;
+  border: 1px inset #3f3f3f;
+  padding: 1em;
+}
+
+.AuctionTitle {
+  height: 4em;
+  border-bottom: 1px inset #efefef;
+  margin-bottom: 1em;
+}
+
+.AuctionHeading {
+  font-size: 2em;
+}
+
+.AuctionDescription {
+  margin-top: 2em;
+  margin-right: 1em;
+}
+
+.AmountHeading {
+  font-weight: bold;
+  font-size: 2em;
+  float: right;
+  margin-right: 1em;
+}
+
+.AmountOffer {
+  font-weight: bold;
+  font-size: 2em;
+  float: left;
+  margin-left: 1em;
+}
+
+.BidList {
+  height: 700px;
+}
+
+.ButtonOffer {
+  font-weight: bold;
+  font-size: 2em;
+  float: right;
+  margin-right: 1em;
+}

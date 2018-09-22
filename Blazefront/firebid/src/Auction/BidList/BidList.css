@@ -1,0 +1,22 @@
+.BidList {
+    height: 700px;
+}
+
+.BidItem {
+    margin-top: 0.5em;
+    display: box;
+}
+
+.BidUserPicture {
+
+}
+
+.BidUserName {
+    margin-left: 1em;
+    font-size: 1.5em;
+}
+
+.BidAmount {
+    float: right;
+    font-size: 1.5em;
+}
