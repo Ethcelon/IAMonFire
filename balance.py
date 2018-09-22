@@ -12,8 +12,15 @@ def accounts():
 
     balance_json = json.dumps(request.get_json(request.json))
     bjson = json.loads(balance_json)
-    bjson_str = (str(bjson['Data']['Balance'][0]['Amount']))
-    return bjson_str
+
+    for key in bjson:
+        for sub_key in bjson[key]:
+            if 'Balance' in sub_key:
+                json_data = (str(bjson['Data']['Balance'][0]['Amount']))
+            elif 'Transaction' in sub_key:
+                json_data = (str(bjson['Data']['Transaction'][0]['Amount']))
+        
+    return json_data
 
 
 
