@@ -4,6 +4,7 @@ import { Grid, Alert, Col, Row, Button, PageHeader, Image } from 'react-bootstra
 import './Auction.css';
 
 import BidList from './BidList/BidList.js';
+import BidForm from './BidForm/BidForm.js'
 
 export default class Auction extends Component {
 
@@ -40,14 +41,8 @@ export default class Auction extends Component {
             </Row>
           </Col>
           <Col xs={3} md={3}  className="AuctionBodyRight">
-            <Row>
-              <BidList data={[]} />
-              <Col md={12} xs={12}>
-                <span className="AmountOffer">$1000</span>
-
-                <Button bsStyle="success" bsSize="large" className="ButtonOffer">Success</Button>
-              </Col>
-            </Row>
+            <BidList data={[]} />
+            <BidForm />
           </Col>
 
         </Row>
