@@ -1,3 +1,6 @@
 .ButtonOffer {
-
+  font-weight: bold;
+  font-size: 2em;
+  float: right;
+  width: 100%;
 }

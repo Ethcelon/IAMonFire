@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Alert, Col, Row, Button, PageHeader, Image } from 'react-bootstrap';
+import { Grid, Col, Row, Image } from 'react-bootstrap';
 
 import './Auction.css';
 
@@ -42,7 +42,7 @@ export default class Auction extends Component {
           </Col>
           <Col xs={3} md={3}  className="AuctionBodyRight">
             <BidList data={[]} />
-            <BidForm />
+            <BidForm minAmount={123} />
           </Col>
 
         </Row>
