@@ -1,0 +1,132 @@
+:toc: left
+= How to use the Open Banking TPP Java sample
+
+== Introduction
+
+This sample application gives you a base for building your TPP app using Spring.
+It will show you the basic Open Banking flow:
+
+* On-boarding to the ASPSP
+* Making a payment
+* Retrieving financial data
+
+This sample is based on the ForgeRock OBRI but can easily be integrated with other ASPSPs.
+
+We built this app to show you what looks like a base for a TPP application but also give you a taste on what is Open Banking.
+For some of you that are new in Open Banking, it's probably the best way to setup your mind and see if it's something you would like to get more involved in.
+
+== Glossary
+
+The Open Banking glossary can be found here:
+https://www.openbanking.org.uk/about-us/glossary/
+
+
+== Install the app
+
+Follow the readme in the github project
+
+== Import client certificate keys from ForgeRock directory
+
+The TPP app will need to consume REST APIs protected by MATLS. What this means is that the SSL connection it does
+with the external service needs to provide what we call a client certificate. It's like an HTTP certificate
+except that it is used for authenticating the client app, for us, the TPP app.
+
+To get this client certificate setup, you need to:
+
+. Register on the ForgeRock directory https://directory.ob.forgerock.financial
+. Login to the directory
+. Create a software statement
+. Name your software statement
+. Set the redirect uris to :
+** https://localhost
+** https://localhost:8080/web/exchange_code/aisp
+** https://localhost:8080/web/exchange_code/pisp
+. Go to the `Transport/Signing/Encryption keys` tab and scroll to the bottom
+. Download the transport keys in .pem and .key formats by going to the `Actions` column
+. Save them in the top level of the project folder
+. Run the bash script `importDirectoryKey.sh` which will load those keys into the java keystore of the app
+
+You are now ready to run the application!
+
+== Compiling the app
+
+Run `mvn clean install`
+
+You will see that it runs the functional tests. Feel free to explore them!
+
+NOTE: The functional tests uses Selenium, to simulate the PSU interaction.
+
+== Test the application is running
+
+Run the application and try the curl command:
+
+include::{snippets}/hello-world/curl-request.adoc[]
+
+You should have the famous response
+
+include::{snippets}/hello-world/http-response.adoc[]
+
+
+== On-board your TPP
+
+To on-board the sample TPP app with a specific ASPSP, call :
+
+include::{snippets}/on-boarding/curl-request.adoc[]
+
+You should receive the on-boarding result
+
+include::{snippets}/on-boarding/http-response.adoc[]
+
+== Make a payment
+
+To make a payment with the sample TPP app to a specific ASPSP :
+
+First, you need to initiate a payment:
+include::{snippets}/PaymentApiTest/initiate-payment/1/curl-request.adoc[]
+
+This will give you the uri where you need to redirect the PSU:
+
+include::{snippets}/PaymentApiTest/initiate-payment/1/http-response.adoc[]
+
+To receive the result of the PSU interacting with his ASPSP, you wait until you receive something in your callback uri.
+When that happened, you will receive the info in the fragment, which will be automatically redirected by a java script into the
+tpp example backend.
+Don't worry, this happen automatically
+
+include::{snippets}/PaymentApiTest/initiate-payment/2/curl-request.adoc[]
+
+As a response, you get the payment result:
+include::{snippets}/PaymentApiTest/initiate-payment/2/http-response.adoc[]
+
+== Postman
+
+We shared a little postman collection that could be handy for you, when using this app:
+
+https://documenter.getpostman.com/view/127862/RWTspaaZ
+
+Feel free to add it to your postman and play with it
+
+== Little exercise
+
+The goal is to retrieve the PSU financial accounts and return them as json.
+
+There is a test for getting accounts that is highlighting missing functionality. Your aim is to implement the missing logic.
+
+. Go to https://github.com/ForgeRock/fr-obri-exercise/blob/master/forgerock-openbanking-excercise-tpp/src/test/java/com/forgerock/openbanking/exercise/tpp/account/AccountsApiTest.java#L21[AccountsApiTest.java] in your IDE.
+. Remove the `@Ignored`
+. Run the test and it should fail
+. Go to https://github.com/ForgeRock/fr-obri-exercise/blob/master/forgerock-openbanking-excercise-tpp/src/main/java/com/forgerock/openbanking/exercise/tpp/api/account/AccountsAPIController.java#L21[AccountsAPIController.java]
+. Implement the logic to get accounts.
+. Run the test and check it passes
+
+If you get stuck or complete it raise a PR and we'll give you some feedback!
+
+== Youtube channel
+
+We got a channel with a few videos. Not all of them are fully up to date, especially the old one. Nevertheless,
+the content in them is still relevant.
+Feel free to dig into it! https://www.youtube.com/playlist?list=PLotly7WaYTXAiDj34bnJgE3Fr1MGEyMMj
+
+
+
+

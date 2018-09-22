@@ -1,0 +1,8 @@
+[source,http,options="nowrap"]
+----
+POST /api/open-banking/payment-requests/initiate HTTP/1.1
+Host: localhost:8080
+Content-Type: application/x-www-form-urlencoded
+
+aspspId=37fcf6aa-85c8-4e6a-9ec7-23492e30df42
+----

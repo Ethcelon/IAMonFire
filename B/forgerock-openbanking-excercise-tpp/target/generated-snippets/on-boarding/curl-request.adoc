@@ -1,0 +1,7 @@
+[source,bash]
+----
+$ curl 'https://localhost:7777/api/registration/aspsp' -i -X POST \
+    -H 'financial_id: 0015800001041REAAY' \
+    -H 'as_discovery_endpoint: https://as.aspsp.ob.forgerock.financial/oauth2/' \
+    -H 'rs_discovery_endpoint: https://rs.aspsp.ob.forgerock.financial/open-banking/discovery'
+----

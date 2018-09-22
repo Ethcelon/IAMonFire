@@ -1,0 +1,9 @@
+[source,http,options="nowrap"]
+----
+POST /api/registration/aspsp HTTP/1.1
+financial_id: 0015800001041REAAY
+as_discovery_endpoint: https://as.aspsp.ob.forgerock.financial/oauth2/
+rs_discovery_endpoint: https://rs.aspsp.ob.forgerock.financial/open-banking/discovery
+Host: localhost:7777
+
+----

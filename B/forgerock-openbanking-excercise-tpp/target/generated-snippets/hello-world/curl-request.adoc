@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ curl 'https://localhost:8080/api/hello-world/' -i -X GET
+----

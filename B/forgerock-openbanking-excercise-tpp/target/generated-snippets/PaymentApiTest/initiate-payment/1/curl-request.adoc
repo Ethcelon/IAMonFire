@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ curl 'https://localhost:8080/api/open-banking/payment-requests/initiate' -i -X POST \
+    -d 'aspspId=37fcf6aa-85c8-4e6a-9ec7-23492e30df42'
+----

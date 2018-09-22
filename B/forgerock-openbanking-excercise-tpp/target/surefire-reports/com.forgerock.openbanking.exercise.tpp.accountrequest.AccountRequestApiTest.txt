@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.forgerock.openbanking.exercise.tpp.accountrequest.AccountRequestApiTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 29.111 s <<< FAILURE! - in com.forgerock.openbanking.exercise.tpp.accountrequest.AccountRequestApiTest
+initiateAccountRequest(com.forgerock.openbanking.exercise.tpp.accountrequest.AccountRequestApiTest)  Time elapsed: 19.271 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.forgerock.openbanking.exercise.tpp.accountrequest.AccountRequestApiTest.initiateAccountRequest(AccountRequestApiTest.java:44)
+

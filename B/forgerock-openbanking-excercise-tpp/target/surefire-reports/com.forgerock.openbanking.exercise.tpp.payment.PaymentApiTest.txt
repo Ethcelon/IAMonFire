@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.forgerock.openbanking.exercise.tpp.payment.PaymentApiTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 36.675 s <<< FAILURE! - in com.forgerock.openbanking.exercise.tpp.payment.PaymentApiTest
+initiatePayment(com.forgerock.openbanking.exercise.tpp.payment.PaymentApiTest)  Time elapsed: 36.643 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at com.forgerock.openbanking.exercise.tpp.payment.PaymentApiTest.initiatePayment(PaymentApiTest.java:44)
+
