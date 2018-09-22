@@ -32,7 +32,7 @@ export default class Auction extends Component {
 
         <Row className="AuctionBody">
           <Col xs={9} md={9} className="AuctionBodyLeft">
-            <Photobox images={["https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season21/season21_ep04_ss01.jpg","https://i.ytimg.com/vi/NiEABxi8G4U/maxresdefault.jpg","https://media.comicbook.com/2018/09/legendary-lets-go-1134651-640x320.jpeg","https://via.placeholder.com/1024x576"]}/>
+            <Photobox images={["https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season21/season21_ep04_ss01.jpg","https://i.ytimg.com/vi/NiEABxi8G4U/maxresdefault.jpg","https://media.comicbook.com/2018/09/legendary-lets-go-1134651-640x320.jpeg","https://via.placeholder.com/1024x576","https://i.redditmedia.com/8rJ6ZLqlwN2wlPuqY6gSBqArVNeg24BKnfKWorcLUxY.jpg?s=f182fe2edc8745ec8d5fb9f6a9f67435"]}/>
             <Description />
           </Col>
           <Col xs={3} md={3}  className="AuctionBodyRight">

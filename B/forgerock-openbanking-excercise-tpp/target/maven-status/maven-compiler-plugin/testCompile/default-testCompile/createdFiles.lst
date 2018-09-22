@@ -1,0 +1,11 @@
+com/forgerock/openbanking/exercise/tpp/ApiDocumentationIntegrationTest.class
+com/forgerock/openbanking/exercise/tpp/template/PostOnboardTest.class
+com/forgerock/openbanking/exercise/tpp/account/AccountsApiTest.class
+com/forgerock/openbanking/exercise/tpp/onboarding/OnBoardingApiTest.class
+com/forgerock/openbanking/exercise/tpp/payment/PaymentApiTest.class
+com/forgerock/openbanking/exercise/tpp/ui/view/AMLoginView.class
+com/forgerock/openbanking/exercise/tpp/ui/SeleniumConfig.class
+com/forgerock/openbanking/exercise/tpp/ui/view/RCSPaymentConsentView.class
+com/forgerock/openbanking/exercise/tpp/accountrequest/AccountRequestApiTest.class
+com/forgerock/openbanking/exercise/tpp/template/PostAISPAccessTokenTest.class
+com/forgerock/openbanking/exercise/tpp/ui/view/RCSAccountsConsentView.class

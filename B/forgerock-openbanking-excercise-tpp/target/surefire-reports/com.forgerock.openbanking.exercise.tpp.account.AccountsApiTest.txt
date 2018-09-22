@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.forgerock.openbanking.exercise.tpp.account.AccountsApiTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 1.473 s - in com.forgerock.openbanking.exercise.tpp.account.AccountsApiTest

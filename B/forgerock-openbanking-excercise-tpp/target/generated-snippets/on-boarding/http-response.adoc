@@ -1,0 +1,8 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=utf-8
+Content-Length: 45
+
+{"id":"4542d634-474d-4093-b673-7ca34f9c4fe8"}
+----
