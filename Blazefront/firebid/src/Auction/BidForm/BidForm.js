@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row, Button, Form, FormGroup, ControlLabel, FormControl, InputGroup } from 'react-bootstrap';
+import { Col, Row, Button, Form, FormGroup, ControlLabel, FormControl, InputGroup, Radio } from 'react-bootstrap';
 
 import './BidForm.css';
 
@@ -14,9 +14,9 @@ export default class BidForm extends Component {
     super(props, context);
 
     this.handleChange = this.handleChange.bind(this);
-
+    console.log(props);
     this.state = {
-      value: ''
+      value: '',
     };
   }
 
@@ -29,23 +29,31 @@ export default class BidForm extends Component {
     this.setState({ value: e.target.value });
   }
 
+  gotForm(form){
+    console.log(form)
+  }
+
   render() {
+
+    var getRadio = this.props.accounts.map((acc, key) => <Radio name="selectedAccount" value={acc} key={key} inline> {acc} </Radio>)
 
     return(
       <Row>
         <Col md={12} xs={12}>
-          <Form>
+          <Form method="POST" action="https://localhost:80/auction/makebid">
+            <FormGroup>
+              {getRadio}
+            </FormGroup>
             <FormGroup controlId="formBasicText" validationState={this.getValidationState()}>
-
               <InputGroup>
                 <InputGroup.Addon>$</InputGroup.Addon>
-                <FormControl bsSize="large" type="text" value={this.state.value} placeholder="Enter amount" onChange={this.handleChange}
+                <FormControl name="bidAmount" bsSize="large" type="text" value={this.state.value} placeholder="Enter amount" onChange={this.handleChange}
                 />
                 <InputGroup.Addon>.00</InputGroup.Addon>
               </InputGroup>
               <FormControl.Feedback />
             </FormGroup>
-            <Button bsStyle="danger" bsSize="large" className="ButtonOffer">Bid!</Button>
+            <Button type="submit" bsStyle="danger" bsSize="large" className="ButtonOffer">Bid!</Button>
           </Form>
         </Col>
       </Row>

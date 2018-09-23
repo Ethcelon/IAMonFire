@@ -14,11 +14,20 @@ export default class Auction extends Component {
     super(props);
 
     this.state = {
-      data: this.props.data
+      accounts: []
     }
   }
 
+  componentDidMount() {
+    fetch(`https://localhost:80/user/accounts`)
+    .then(result=>result.json())
+    .then(items=>this.setState({accounts: items}))
+  }
+
   render() {
+
+    var accounts = ['one', 'two'];
+
     return (
       <Grid className="FireAuction" fluid={true}>
 
@@ -37,7 +46,7 @@ export default class Auction extends Component {
           </Col>
           <Col xs={3} md={3}  className="AuctionBodyRight">
             <BidList data={[]} />
-            <BidForm minAmount={123} />
+            <BidForm minAmount={123} accounts={accounts} />
           </Col>
 
         </Row>
