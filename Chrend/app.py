@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, send_from_directory, redirect, abort
 from flask_cors import CORS
 import json
 
-from db import bootstrap_db, save_nonce, validate_nonce
+from db import bootstrap_db, save_nonce, validate_nonce, save_account
 
 from helpers import create_account_request_and_give_me_hybrid_request
 from helpers import exchange_code_for_token
@@ -78,17 +78,35 @@ def capture_payment():
 
 @app.route('/accounts', methods=['GET'])
 def capture_accounts():
-    if not request.json:
-        abort(400)
-
     accounts_json = json.dumps(request.get_json(request.json))
     account = json.loads(accounts_json)
 
-    json_accounts = []
+    data = {}
+    for account in account:
+        data[account['Nickname']] = account['AccountId']
 
-    for key in account:
-        for sub_key in account[key]:
-            json_accounts.append(account['Data']['']))
+    save_account(data)
+
+
+@app.route('/balance', methods=['POST'])
+def accounts():
+    if not request.json:
+        abort(400)
+
+    balance_json = json.dumps(request.get_json(request.json))
+    bjson = json.loads(balance_json)
+
+    json_data=[]
+    
+    for key in bjson:
+        for sub_key in bjson[key]:
+            if 'Balance' in sub_key:
+                json_data = (str(bjson['Data']['Balance'][0]['Amount']))
+            elif 'Transaction' in sub_key:
+                for i in bjson['Data']['Transaction']:
+                  json_data.append(i['Amount'])
+            
+    return (str(json_data))
     
 
 
