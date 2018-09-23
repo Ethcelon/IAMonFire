@@ -39,7 +39,11 @@ def get_accounts():
 def parse_bid():
     if request.method == 'POST':
         print(request.form)
-    return jsonify({"success" : "True"}), 200
+
+    print(request.form.get('selectedAccount'))
+    print(request.form.get('bidAmount'))
+
+    return jsonify({"bidStatus" : "Success"}), 200
 
 @app.route('/oauth2/capture')
 def capture_oauth2():
@@ -89,7 +93,7 @@ def capture_accounts():
     for key in account:
         for sub_key in account[key]:
             json_accounts.append(account['Data']['']))
-    
+
 
 
 if __name__ == "__main__":
