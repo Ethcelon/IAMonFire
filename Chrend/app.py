@@ -7,7 +7,7 @@ from db import bootstrap_db, save_nonce, validate_nonce
 from helpers import create_account_request_and_give_me_hybrid_request
 from helpers import exchange_code_for_token
 from db import write_account_token_to_db
-
+from helpers import get_accounts, save_account
 bootstrap_db()
 
 app = Flask(__name__)
@@ -33,7 +33,19 @@ def serve_html(path):
 
 @app.route('/user/accounts')
 def get_accounts():
-    return jsonify(['one', 'two']), 200
+
+    token = read_account_token_from_db()
+    accounts = get_accounts_help(token)
+
+    list_accounts = accounts["data"]["Account"]
+    nicks = []
+
+    for account in list_accounts:
+        nicks.append(account["Nickname"])
+
+    save_account(accounts)
+    print(accounts)
+    return jsonify(nicks), 200
 
 @app.route('/auction/makebid', methods=['POST'])
 def parse_bid():
@@ -79,21 +91,6 @@ def capture_payment():
     json_data = (str(amount['Data']['Initiation']['InstructedAmount']['Amount']))
 
     return (json_data)
-
-@app.route('/accounts', methods=['GET'])
-def capture_accounts():
-    if not request.json:
-        abort(400)
-
-    accounts_json = json.dumps(request.get_json(request.json))
-    account = json.loads(accounts_json)
-
-    json_accounts = []
-
-    for key in account:
-        for sub_key in account[key]:
-            json_accounts.append(account['Data']['']))
-
 
 
 if __name__ == "__main__":
