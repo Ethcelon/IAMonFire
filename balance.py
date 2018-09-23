@@ -1,6 +1,7 @@
 from flask import Flask, abort, request, jsonify
 import json
 import requests
+import numpy as np
 
 app = Flask(__name__)
 
@@ -13,14 +14,19 @@ def accounts():
     balance_json = json.dumps(request.get_json(request.json))
     bjson = json.loads(balance_json)
 
+    json_data=[]
+    
     for key in bjson:
         for sub_key in bjson[key]:
             if 'Balance' in sub_key:
                 json_data = (str(bjson['Data']['Balance'][0]['Amount']))
             elif 'Transaction' in sub_key:
-                json_data = (str(bjson['Data']['Transaction'][0]['Amount']))
-        
-    return json_data
+                for i in bjson['Data']['Transaction']:
+                  json_data.append(i['Amount'])
+    
+    print (type(json_data))
+
+    return (str(json_data))
 
 
 
