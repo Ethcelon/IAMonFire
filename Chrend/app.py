@@ -5,8 +5,8 @@ import json
 from db import bootstrap_db, save_nonce, validate_nonce
 
 from helpers import create_account_request_and_give_me_hybrid_request
-from helpers import exchange_code_for_token
-from db import write_account_token_to_db, get_accounts, save_account
+from helpers import exchange_code_for_token, get_accounts_help
+from db import write_account_token_to_db, get_accounts, save_account, read_account_token_from_db
 
 bootstrap_db()
 
@@ -36,8 +36,8 @@ def get_accounts():
 
     token = read_account_token_from_db()
     accounts = get_accounts_help(token)
-
-    list_accounts = accounts["data"]["Account"]
+    print(accounts)
+    list_accounts = accounts["Data"]["Account"]
     nicks = []
 
     for account in list_accounts:
@@ -78,7 +78,7 @@ def capture_oauth2():
 
     write_account_token_to_db(access_token)
 
-    return redirect("localhost:3000/auction", code=302)
+    return redirect("http://localhost:3000/auction", code=302)
 
 @app.route('/payment', methods=['POST'])
 def capture_payment():

@@ -26,8 +26,6 @@ export default class Auction extends Component {
 
   render() {
 
-    var accounts = ['one', 'two'];
-
     return (
       <Grid className="FireAuction" fluid={true}>
 
@@ -46,7 +44,7 @@ export default class Auction extends Component {
           </Col>
           <Col xs={3} md={3}  className="AuctionBodyRight">
             <BidList data={[]} />
-            <BidForm minAmount={123} accounts={accounts} />
+            <BidForm minAmount={123} accounts={this.state.accounts} />
           </Col>
 
         </Row>

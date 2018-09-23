@@ -5,9 +5,9 @@ import uuid
 
 KEY_PATH_NAME = "keys/f53d8e94-3e45-49eb-b3ec-0835f61f9b80"
 CLIENT_CERT = ( KEY_PATH_NAME + '.pem', KEY_PATH_NAME + '.key')
-CLIENT_ID = "5af1bffd-5a30-4aa8-b09c-7e140401788b"
+CLIENT_ID = "3ea00be2-8972-4990-88eb-22c871fdae19"
 AUD = "https://matls.as.aspsp.ob.forgerock.financial/oauth2/openbanking"
-CLIENT_REDIRECT_URI = "https://www.google.com"  #https://localhost:80 
+CLIENT_REDIRECT_URI = "https://localhost:80/oauth2/redirect/redirect.html"  #https://localhost:80
 
 def make_request(method, url, payload=None, headers=None, cert=CLIENT_CERT, verify=True):
     r = None
@@ -21,7 +21,7 @@ def make_request(method, url, payload=None, headers=None, cert=CLIENT_CERT, veri
     # TODO: move response to class.
     # set the response regardless or errors
     try:
-        
+
         response = r.json()
     except ValueError:
         response = {"error": "Json decoding error", "raw": r.text}
@@ -94,7 +94,9 @@ def create_account_request():
 
     print(response, status_code)
 
-def gen_account_request_parameter(state):
+    return response["Data"]["AccountRequestId"]
+
+def gen_account_request_parameter(state, account_request_id):
     import requests
 
     url = "https://jwkms.ob.forgerock.financial:443/api/crypto/signClaims"
@@ -102,7 +104,7 @@ def gen_account_request_parameter(state):
     # Set 5 minute expiry
     exp = time.time() +60*5
 
-    payload = "{\n  \"aud\": \""+AUD+"\",\n  \"scope\": \"openid accounts\",\n  \"iss\": \""+CLIENT_ID+"\",\n  \"claims\": {\n    \"id_token\": {\n      \"acr\": {\n        \"value\": \"urn:openbanking:psd2:sca\",\n        \"essential\": true\n      },\n      \"openbanking_intent_id\": {\n        \"value\": \"A441af61d-84e8-457f-908e-69036fdc76f1\",\n        \"essential\": true\n      }\n    },\n    \"userinfo\": {\n      \"openbanking_intent_id\": {\n        \"value\": \"A441af61d-84e8-457f-908e-69036fdc76f1\",\n        \"essential\": true\n      }\n    }\n  },\n  \"response_type\": \"code id_token\",\n  \"redirect_uri\": \"https://www.google.com\",\n  \"state\": \""+state+"\",\n  \"exp\": "+str(exp)+",\n  \"nonce\": \""+state+"\",\n  \"client_id\": \""+CLIENT_ID+"\"\n}"
+    payload = "{\n  \"aud\": \""+AUD+"\",\n  \"scope\": \"openid accounts\",\n  \"iss\": \""+CLIENT_ID+"\",\n  \"claims\": {\n    \"id_token\": {\n      \"acr\": {\n        \"value\": \"urn:openbanking:psd2:sca\",\n        \"essential\": true\n      },\n      \"openbanking_intent_id\": {\n        \"value\": \""+account_request_id+"\",\n        \"essential\": true\n      }\n    },\n    \"userinfo\": {\n      \"openbanking_intent_id\": {\n        \"value\": \""+account_request_id+"\",\n        \"essential\": true\n      }\n    }\n  },\n  \"response_type\": \"code id_token\",\n  \"redirect_uri\": \"https://localhost:80/oauth2/redirect/redirect.html\",\n  \"state\": \""+state+"\",\n  \"exp\": "+str(exp)+",\n  \"nonce\": \""+state+"\",\n  \"client_id\": \""+CLIENT_ID+"\"\n}"
 
     headers = {
         'Content-Type': "application/json",
@@ -117,25 +119,24 @@ def gen_account_request_parameter(state):
     response = response['raw']
     return response
 
-def generate_hybrid_url_with_account_rquest_parameter():
+def generate_hybrid_url_with_account_rquest_parameter(account_request_id):
 
     nonce = str(uuid.uuid4())
-    request_parameter = gen_account_request_parameter(nonce)
+    request_parameter = gen_account_request_parameter(nonce, account_request_id)
 
-    url = "{AS_authorization_endpoint}?response_type=code id_token&client_id={CLIENT_ID}&state={nonce}&nonce={nonce}&scope=openid payments accounts&redirect_uri={CLIENT_REDIRECT_URI}&request={request_parameter}".format(
+    url = "{AS_authorization_endpoint}?response_type=code id_token&client_id={CLIENT_ID}&state={nonce}&nonce={nonce}&scope=openid payments accounts&redirect_uri=https%3A%2F%2Flocalhost%3A80%2Foauth2%2Fredirect%2Fredirect.html&request={request_parameter}".format(
         AS_authorization_endpoint = 'https://matls.as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize',
         CLIENT_ID=CLIENT_ID,
         state=nonce,
         nonce=nonce,
-        CLIENT_REDIRECT_URI=CLIENT_REDIRECT_URI,
         request_parameter=request_parameter
     )
 
     return url, nonce
 
 def create_account_request_and_give_me_hybrid_request():
-    create_account_request()
-    return generate_hybrid_url_with_account_rquest_parameter()
+    account_request_id = create_account_request()
+    return generate_hybrid_url_with_account_rquest_parameter(account_request_id)
 
 def exchange_code_for_token(code):
 
@@ -143,7 +144,7 @@ def exchange_code_for_token(code):
 
     client_assertion = gen_client_credential_jwt()
 
-    payload = "grant_type=authorization_code&code="+code+"&redirect_uri=https%3A%2F%2Flocalhost:80%2Foauth2%2Fredirect%2Fredirect.html&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=" + client_assertion
+    payload = "grant_type=authorization_code&code="+code+"&redirect_uri=https%3A%2F%2Flocalhost%3A80%2Foauth2%2Fredirect%2Fredirect.html&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=" + client_assertion
 
     headers = {
         'Content-Type': "application/x-www-form-urlencoded",
@@ -151,7 +152,26 @@ def exchange_code_for_token(code):
         }
 
     response, status_code = make_request('post', url, payload=payload, headers=headers)
-
+    print(response)
     return response["access_token"]
 
-#gen_stuff_and_print_req()
+def get_accounts_help(token):
+
+    url = "https://rs.aspsp.ob.forgerock.financial:443/open-banking/v2.0/accounts"
+
+    headers = {
+        'Authorization': "Bearer "+token,
+        'Content-Type': "application/json",
+        'x-idempotency-key': "FRESCO.21302.GFX.20",
+        'x-fapi-financial-id': "0015800001041REAAY",
+        'x-fapi-customer-last-logged-time': "Sun, 10 Sep 2017 19:43:31 UTC",
+        'x-fapi-customer-ip-address': "104.25.212.99",
+        'x-fapi-interaction-id': "93bac548-d2de-4546-b106-880a5018460d",
+        'Accept': "application/json",
+        'Cache-Control': "no-cache"
+        }
+
+    response, status_code = make_request('get', url, headers=headers)
+
+
+    return response

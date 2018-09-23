@@ -9,7 +9,7 @@ export default class Login extends Component {
       <Grid className="FireLogin" fluid={true}>
           <Row>
               <Col mdOffset={4} md={4}>
-                <Form horizontal>
+                <Form method="POST" action="https://localhost:80/login" horizontal>
                   <FormGroup controlId="formHorizontalEmail">
                     <Col componentClass={ControlLabel} sm={2}>
                       Email
