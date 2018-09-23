@@ -1,0 +1,22 @@
+{
+    "Data": {
+        "Balance": [
+            {
+                "AccountId": "58a6da7f-4775-4f8c-b4c5-38c922ede4eb",
+                "Amount": {
+                    "Amount": "7386.45",
+                    "Currency": "GBP"
+                },
+                "CreditDebitIndicator": "Debit",
+                "Type": "InterimAvailable",
+                "DateTime": "2018-09-22T13:45:18+00:00"
+            }
+        ]
+    },
+    "Links": {
+        "Self": "https://rs.aspsp.ob.forgerock.financial/open-banking/v1.1/accounts/58a6da7f-4775-4f8c-b4c5-38c922ede4eb/balances"
+    },
+    "Meta": {
+        "TotalPages": 1
+    }
+}

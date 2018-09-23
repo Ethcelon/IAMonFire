@@ -1,0 +1,314 @@
+{
+    "Data": {
+        "Transaction": [
+            {
+                "AccountId": "58a6da7f-4775-4f8c-b4c5-38c922ede4eb",
+                "TransactionId": "5cbf406b-5587-41a8-a55e-c31d85651ea7",
+                "TransactionReference": "Ref 2672",
+                "Amount": {
+                    "Amount": "95.22",
+                    "Currency": "GBP"
+                },
+                "CreditDebitIndicator": "Credit",
+                "Status": "Booked",
+                "BookingDateTime": "2017-09-06T08:25:34+00:00",
+                "ValueDateTime": "2017-09-06T08:28:04+00:00",
+                "TransactionInformation": "Cash from Lindsay, Quynn M.",
+                "BankTransactionCode": {
+                    "Code": "ReceivedCreditTransfer",
+                    "SubCode": "DomesticCreditTransfer"
+                },
+                "ProprietaryBankTransactionCode": {
+                    "Code": "Transfer",
+                    "Issuer": "AlphaBank"
+                },
+                "Balance": {
+                    "Amount": {
+                        "Amount": "7552.33",
+                        "Currency": "GBP"
+                    },
+                    "CreditDebitIndicator": "Debit",
+                    "Type": "InterimBooked"
+                }
+            },
+            {
+                "AccountId": "58a6da7f-4775-4f8c-b4c5-38c922ede4eb",
+                "TransactionId": "b27cd119-31bd-4b52-a293-3794a8b23198",
+                "TransactionReference": "Ref 6677",
+                "Amount": {
+                    "Amount": "283.49",
+                    "Currency": "GBP"
+                },
+                "CreditDebitIndicator": "Debit",
+                "Status": "Booked",
+                "BookingDateTime": "2017-09-06T01:31:48+00:00",
+                "ValueDateTime": "2017-09-06T01:35:22+00:00",
+                "TransactionInformation": "Cash to Glenn, Bernard C.",
+                "BankTransactionCode": {
+                    "Code": "ReceivedCreditTransfer",
+                    "SubCode": "DomesticCreditTransfer"
+                },
+                "ProprietaryBankTransactionCode": {
+                    "Code": "Transfer",
+                    "Issuer": "AlphaBank"
+                },
+                "Balance": {
+                    "Amount": {
+                        "Amount": "7552.33",
+                        "Currency": "GBP"
+                    },
+                    "CreditDebitIndicator": "Debit",
+                    "Type": "InterimBooked"
+                }
+            },
+            {
+                "AccountId": "58a6da7f-4775-4f8c-b4c5-38c922ede4eb",
+                "TransactionId": "6e2621dd-e311-4e63-a77a-5b58939bd0b2",
+                "TransactionReference": "Ref 2999",
+                "Amount": {
+                    "Amount": "87.45",
+                    "Currency": "GBP"
+                },
+                "CreditDebitIndicator": "Credit",
+                "Status": "Booked",
+                "BookingDateTime": "2017-09-01T23:20:52+00:00",
+                "ValueDateTime": "2017-09-01T23:23:20+00:00",
+                "TransactionInformation": "Cash from Strong, Hunter A.",
+                "BankTransactionCode": {
+                    "Code": "ReceivedCreditTransfer",
+                    "SubCode": "DomesticCreditTransfer"
+                },
+                "ProprietaryBankTransactionCode": {
+                    "Code": "Transfer",
+                    "Issuer": "AlphaBank"
+                },
+                "Balance": {
+                    "Amount": {
+                        "Amount": "7552.33",
+                        "Currency": "GBP"
+                    },
+                    "CreditDebitIndicator": "Debit",
+                    "Type": "InterimBooked"
+                }
+            },
+            {
+                "AccountId": "58a6da7f-4775-4f8c-b4c5-38c922ede4eb",
+                "TransactionId": "9f71c962-a858-46e5-9492-0e2198fe74af",
+                "TransactionReference": "Ref 9740",
+                "Amount": {
+                    "Amount": "144.24",
+                    "Currency": "GBP"
+                },
+                "CreditDebitIndicator": "Debit",
+                "Status": "Booked",
+                "BookingDateTime": "2017-09-24T10:23:04+00:00",
+                "ValueDateTime": "2017-09-24T10:24:32+00:00",
+                "TransactionInformation": "Cash to Harris, Jana Y.",
+                "BankTransactionCode": {
+                    "Code": "ReceivedCreditTransfer",
+                    "SubCode": "DomesticCreditTransfer"
+                },
+                "ProprietaryBankTransactionCode": {
+                    "Code": "Transfer",
+                    "Issuer": "AlphaBank"
+                },
+                "Balance": {
+                    "Amount": {
+                        "Amount": "7552.33",
+                        "Currency": "GBP"
+                    },
+                    "CreditDebitIndicator": "Debit",
+                    "Type": "InterimBooked"
+                }
+            },
+            {
+                "AccountId": "58a6da7f-4775-4f8c-b4c5-38c922ede4eb",
+                "TransactionId": "ae93c765-f1fa-49e1-8b80-2a01a370b9e4",
+                "TransactionReference": "Ref 2770",
+                "Amount": {
+                    "Amount": "54.18",
+                    "Currency": "GBP"
+                },
+                "CreditDebitIndicator": "Credit",
+                "Status": "Booked",
+                "BookingDateTime": "2017-09-23T20:48:34+00:00",
+                "ValueDateTime": "2017-09-23T20:50:14+00:00",
+                "TransactionInformation": "Cash from Ratliff, Jamal J.",
+                "BankTransactionCode": {
+                    "Code": "ReceivedCreditTransfer",
+                    "SubCode": "DomesticCreditTransfer"
+                },
+                "ProprietaryBankTransactionCode": {
+                    "Code": "Transfer",
+                    "Issuer": "AlphaBank"
+                },
+                "Balance": {
+                    "Amount": {
+                        "Amount": "7552.33",
+                        "Currency": "GBP"
+                    },
+                    "CreditDebitIndicator": "Debit",
+                    "Type": "InterimBooked"
+                }
+            },
+            {
+                "AccountId": "58a6da7f-4775-4f8c-b4c5-38c922ede4eb",
+                "TransactionId": "213d156b-ed5b-4539-b887-342fd1bdccba",
+                "TransactionReference": "Ref 9681",
+                "Amount": {
+                    "Amount": "280.94",
+                    "Currency": "GBP"
+                },
+                "CreditDebitIndicator": "Debit",
+                "Status": "Booked",
+                "BookingDateTime": "2017-09-17T09:06:33+00:00",
+                "ValueDateTime": "2017-09-17T09:10:14+00:00",
+                "TransactionInformation": "Cash to Rollins, Amela Y.",
+                "BankTransactionCode": {
+                    "Code": "ReceivedCreditTransfer",
+                    "SubCode": "DomesticCreditTransfer"
+                },
+                "ProprietaryBankTransactionCode": {
+                    "Code": "Transfer",
+                    "Issuer": "AlphaBank"
+                },
+                "Balance": {
+                    "Amount": {
+                        "Amount": "7552.33",
+                        "Currency": "GBP"
+                    },
+                    "CreditDebitIndicator": "Debit",
+                    "Type": "InterimBooked"
+                }
+            },
+            {
+                "AccountId": "58a6da7f-4775-4f8c-b4c5-38c922ede4eb",
+                "TransactionId": "a002c07e-e1bf-46f1-aceb-5871c8274000",
+                "TransactionReference": "Ref 5253",
+                "Amount": {
+                    "Amount": "357.95",
+                    "Currency": "GBP"
+                },
+                "CreditDebitIndicator": "Credit",
+                "Status": "Booked",
+                "BookingDateTime": "2017-09-29T12:22:56+00:00",
+                "ValueDateTime": "2017-09-29T12:26:24+00:00",
+                "TransactionInformation": "Cash from Page, Clarke D.",
+                "BankTransactionCode": {
+                    "Code": "ReceivedCreditTransfer",
+                    "SubCode": "DomesticCreditTransfer"
+                },
+                "ProprietaryBankTransactionCode": {
+                    "Code": "Transfer",
+                    "Issuer": "AlphaBank"
+                },
+                "Balance": {
+                    "Amount": {
+                        "Amount": "7552.33",
+                        "Currency": "GBP"
+                    },
+                    "CreditDebitIndicator": "Debit",
+                    "Type": "InterimBooked"
+                }
+            },
+            {
+                "AccountId": "58a6da7f-4775-4f8c-b4c5-38c922ede4eb",
+                "TransactionId": "61d46e70-cfa0-4580-9ed2-e586bd9a5d6e",
+                "TransactionReference": "Ref 51",
+                "Amount": {
+                    "Amount": "146.20",
+                    "Currency": "GBP"
+                },
+                "CreditDebitIndicator": "Credit",
+                "Status": "Booked",
+                "BookingDateTime": "2017-09-24T15:55:18+00:00",
+                "ValueDateTime": "2017-09-24T15:57:52+00:00",
+                "TransactionInformation": "Cash from Quinn, Xantha B.",
+                "BankTransactionCode": {
+                    "Code": "ReceivedCreditTransfer",
+                    "SubCode": "DomesticCreditTransfer"
+                },
+                "ProprietaryBankTransactionCode": {
+                    "Code": "Transfer",
+                    "Issuer": "AlphaBank"
+                },
+                "Balance": {
+                    "Amount": {
+                        "Amount": "7552.33",
+                        "Currency": "GBP"
+                    },
+                    "CreditDebitIndicator": "Debit",
+                    "Type": "InterimBooked"
+                }
+            },
+            {
+                "AccountId": "58a6da7f-4775-4f8c-b4c5-38c922ede4eb",
+                "TransactionId": "d86117df-476a-42e6-bb02-e0d0b3640b10",
+                "TransactionReference": "Ref 8214",
+                "Amount": {
+                    "Amount": "308.83",
+                    "Currency": "GBP"
+                },
+                "CreditDebitIndicator": "Debit",
+                "Status": "Booked",
+                "BookingDateTime": "2017-09-12T20:56:52+00:00",
+                "ValueDateTime": "2017-09-12T20:59:27+00:00",
+                "TransactionInformation": "Cash to Blackwell, Alisa T.",
+                "BankTransactionCode": {
+                    "Code": "ReceivedCreditTransfer",
+                    "SubCode": "DomesticCreditTransfer"
+                },
+                "ProprietaryBankTransactionCode": {
+                    "Code": "Transfer",
+                    "Issuer": "AlphaBank"
+                },
+                "Balance": {
+                    "Amount": {
+                        "Amount": "7552.33",
+                        "Currency": "GBP"
+                    },
+                    "CreditDebitIndicator": "Debit",
+                    "Type": "InterimBooked"
+                }
+            },
+            {
+                "AccountId": "58a6da7f-4775-4f8c-b4c5-38c922ede4eb",
+                "TransactionId": "254377ae-bc98-4389-859e-6ef56d3dfe19",
+                "TransactionReference": "Ref 6717",
+                "Amount": {
+                    "Amount": "373.88",
+                    "Currency": "GBP"
+                },
+                "CreditDebitIndicator": "Credit",
+                "Status": "Booked",
+                "BookingDateTime": "2017-09-20T20:43:48+00:00",
+                "ValueDateTime": "2017-09-20T20:44:52+00:00",
+                "TransactionInformation": "Cash from Montoya, Adrienne E.",
+                "BankTransactionCode": {
+                    "Code": "ReceivedCreditTransfer",
+                    "SubCode": "DomesticCreditTransfer"
+                },
+                "ProprietaryBankTransactionCode": {
+                    "Code": "Transfer",
+                    "Issuer": "AlphaBank"
+                },
+                "Balance": {
+                    "Amount": {
+                        "Amount": "7552.33",
+                        "Currency": "GBP"
+                    },
+                    "CreditDebitIndicator": "Debit",
+                    "Type": "InterimBooked"
+                }
+            }
+        ]
+    },
+    "Links": {
+        "Self": "https://rs.aspsp.ob.forgerock.financial/open-banking/v1.1/accounts/58a6da7f-4775-4f8c-b4c5-38c922ede4eb/transactions"
+    },
+    "Meta": {
+        "TotalPages": 1,
+        "FirstAvailableDateTime": "2017-05-03T00:00:00+00:00",
+        "LastAvailableDateTime": "2018-12-03T00:00:00+00:00"
+    }
+}
