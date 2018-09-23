@@ -57,7 +57,7 @@ def get_access_token():
 
     url = "https://matls.as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/access_token"
 
-    payload = "grant_type=client_credentials&scope=openid%20accounts&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=" + client_assertion
+    payload = "grant_type=client_credentials&scope=openid%20accounts%20payments&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=" + client_assertion
 
     headers = {
         'Content-Type': "application/x-www-form-urlencoded",
