@@ -30,6 +30,10 @@ def login():
 def serve_html(path):
     return send_from_directory('html', path)
 
+@app.route('/user/accounts')
+def get_accounts():
+    return jsonify(['one', 'two']), 200
+
 @app.route('/oauth2/capture')
 def capture_oauth2():
 
