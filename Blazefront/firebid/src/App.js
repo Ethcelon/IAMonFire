@@ -8,25 +8,30 @@ import Auction from './Auction/Auction.js'
 import Login from './Login/Login.jsx'
 import './App.css';
 
-class App extends Component {
+class Home extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: {}
+    }
+  }
+
+  componentDidMount() {
+    fetch(`https://localhost:80/`)
+    .then(result=>result.json())
+    .then(items=>console.log(items))
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to FireBid</h1>
-        </header>
-        <Auction />
+        hi
       </div>
     );
   }
 }
-
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-);
 
 const flameRouter = () => (
   <Router>
