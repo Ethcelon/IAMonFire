@@ -1,5 +1,6 @@
-from flask import Flask, jsonify, request, send_from_directory, redirect
+from flask import Flask, jsonify, request, send_from_directory, redirect, abort
 from flask_cors import CORS
+import json
 
 from db import bootstrap_db, save_nonce, validate_nonce
 
@@ -52,6 +53,34 @@ def capture_oauth2():
     write_account_token_to_db(access_token)
 
     return redirect("localhost:3000/auction", code=302)
+
+@app.route('/payment', methods=['POST'])
+def capture_payment():
+    if not request.json:
+        abort(400)
+
+    amount_json = json.dumps(request.get_json(request.json))
+    amount = json.loads(amount_json)
+
+    json_data = (str(amount['Data']['Initiation']['InstructedAmount']['Amount']))
+
+    return (json_data)
+
+@app.route('/accounts', methods=['GET'])
+def capture_accounts():
+    if not request.json:
+        abort(400)
+
+    accounts_json = json.dumps(request.get_json(request.json))
+    account = json.loads(accounts_json)
+
+    json_accounts = []
+
+    for key in account:
+        for sub_key in account[key]:
+            json_accounts.append(account['Data']['']))
+    
+
 
 if __name__ == "__main__":
     context = ('keys/cert.pem', 'keys/key.pem')
