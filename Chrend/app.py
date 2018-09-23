@@ -5,8 +5,13 @@ import json
 from db import bootstrap_db, save_nonce, validate_nonce, save_account
 
 from helpers import create_account_request_and_give_me_hybrid_request
+<<<<<<< HEAD
 from helpers import exchange_code_for_token, get_balance
 from db import write_account_token_to_db, read_account_token_from_db, get_accounts
+=======
+from helpers import exchange_code_for_token
+from db import write_account_token_to_db, get_accounts, save_account
+>>>>>>> 849134267a970c780f318fc1a7c686f042202fea
 
 bootstrap_db()
 
@@ -31,9 +36,27 @@ def login():
 def serve_html(path):
     return send_from_directory('html', path)
 
+<<<<<<< HEAD
 # @app.route('/user/accounts')
 # def get_accounts():
 #     return jsonify(['one', 'two']), 200
+=======
+@app.route('/user/accounts')
+def get_accounts():
+
+    token = read_account_token_from_db()
+    accounts = get_accounts_help(token)
+
+    list_accounts = accounts["data"]["Account"]
+    nicks = []
+
+    for account in list_accounts:
+        nicks.append(account["Nickname"])
+
+    save_account(accounts)
+    print(accounts)
+    return jsonify(nicks), 200
+>>>>>>> 849134267a970c780f318fc1a7c686f042202fea
 
 @app.route('/auction/makebid', methods=['POST'])
 def parse_bid():
@@ -95,6 +118,7 @@ def capture_payment():
 
     return (json_data)
 
+<<<<<<< HEAD
 @app.route('/accounts', methods=['GET'])
 def capture_accounts():
     accounts_json = json.dumps(request.get_json(request.json))
