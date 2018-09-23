@@ -39,3 +39,15 @@ def read_account_token_from_db():
     token_obj = account_access_tokens.get(TokenQ.user == 'om2')
     print("Found token {} for user {}.", token_obj, 'om2')
     return token_obj['account_access_token']
+
+def save_account(accounts):
+    global db
+    account_table = db.table('accounts')
+    Account = Query()
+    new = account_table.upsert({'user': 'om2', 'accounts': accounts}, Account.user == 'om2')
+
+def get_accounts(user):
+    global db
+    account_table = db.table('accounts')
+    Account = Query()
+    return account_table.get(Account.user == 'om2')
