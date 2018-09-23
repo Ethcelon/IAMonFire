@@ -4,7 +4,8 @@ from flask_cors import CORS
 from db import bootstrap_db, save_nonce, validate_nonce
 
 from helpers import create_account_request_and_give_me_hybrid_request
-from helpers import exchange_code_for_token, write_account_token_to_db
+from helpers import exchange_code_for_token
+from db import write_account_token_to_db
 
 bootstrap_db()
 
@@ -50,7 +51,7 @@ def capture_oauth2():
 
     write_account_token_to_db(access_token)
 
-    return redirect(localhost:3000/auction, code=302)
+    return redirect("localhost:3000/auction", code=302)
 
 if __name__ == "__main__":
     context = ('keys/cert.pem', 'keys/key.pem')

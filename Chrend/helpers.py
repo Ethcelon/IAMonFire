@@ -3,11 +3,11 @@ import json
 import time
 import uuid
 
-KEY_PATH_NAME = "keys/76931e3e-b210-41bb-9b1c-45fe4053f052"
+KEY_PATH_NAME = "keys/f53d8e94-3e45-49eb-b3ec-0835f61f9b80"
 CLIENT_CERT = ( KEY_PATH_NAME + '.pem', KEY_PATH_NAME + '.key')
-CLIENT_ID = "920c93d6-bc92-40e9-b98c-aaa0c7c947de"
+CLIENT_ID = "5af1bffd-5a30-4aa8-b09c-7e140401788b"
 AUD = "https://matls.as.aspsp.ob.forgerock.financial/oauth2/openbanking"
-CLIENT_REDIRECT_URI = "https://www.google.com"
+CLIENT_REDIRECT_URI = "https://www.google.com"  #https://localhost:80 
 
 def make_request(method, url, payload=None, headers=None, cert=CLIENT_CERT, verify=True):
     r = None
@@ -21,6 +21,7 @@ def make_request(method, url, payload=None, headers=None, cert=CLIENT_CERT, veri
     # TODO: move response to class.
     # set the response regardless or errors
     try:
+        
         response = r.json()
     except ValueError:
         response = {"error": "Json decoding error", "raw": r.text}
@@ -153,4 +154,4 @@ def exchange_code_for_token(code):
 
     return response["access_token"]
 
-gen_stuff_and_print_req()
+#gen_stuff_and_print_req()
