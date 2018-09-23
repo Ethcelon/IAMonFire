@@ -21,7 +21,6 @@ def make_request(method, url, payload=None, headers=None, cert=CLIENT_CERT, veri
     # TODO: move response to class.
     # set the response regardless or errors
     try:
-        
         response = r.json()
     except ValueError:
         response = {"error": "Json decoding error", "raw": r.text}
@@ -155,3 +154,47 @@ def exchange_code_for_token(code):
     return response["access_token"]
 
 #gen_stuff_and_print_req()
+
+def get_balance(accountid,accesstoken):
+
+    #accountid = "58a6da7f-4775-4f8c-b4c5-38c922ede4eb"
+    #accesstoken = "eyJ0eXAiOiJKV1QiLCJ6aXAiOiJOT05FIiwia2lkIjoiRm9sN0lwZEtlTFptekt0Q0VnaTFMRGhTSXpNPSIsImFsZyI6IkVTMjU2In0.eyJzdWIiOiJkZW1vIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiZmRkYmMwNWUtOTIzMy00NGYyLTgwODItM2ViMzE4MzVkMDY3IiwiaXNzIjoiaHR0cHM6Ly9tYXRscy5hcy5hc3BzcC5vYi5mb3JnZXJvY2suZmluYW5jaWFsL29hdXRoMi9vcGVuYmFua2luZyIsInRva2VuTmFtZSI6ImFjY2Vzc190b2tlbiIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJhdXRoR3JhbnRJZCI6ImE2MDFlYmE3LWI3ODUtNGNiMC05NTg5LTA0MmM1YTI4NmYwYSIsIm5vbmNlIjoiNWJhNzZiYTk2MjRkMTI2OGMwMTUzMTUxIiwiYXVkIjoiNWFmMWJmZmQtNWEzMC00YWE4LWIwOWMtN2UxNDA0MDE3ODhiIiwibmJmIjoxNTM3Njk4Nzc4LCJncmFudF90eXBlIjoiYXV0aG9yaXphdGlvbl9jb2RlIiwic2NvcGUiOlsib3BlbmlkIiwicGF5bWVudHMiLCJhY2NvdW50cyJdLCJhdXRoX3RpbWUiOjE1Mzc2OTg3NzEwMDAsImNsYWltcyI6IntcImlkX3Rva2VuXCI6e1wiYWNyXCI6e1widmFsdWVcIjpcInVybjpvcGVuYmFua2luZzpwc2QyOnNjYVwiLFwiZXNzZW50aWFsXCI6dHJ1ZX0sXCJvcGVuYmFua2luZ19pbnRlbnRfaWRcIjp7XCJ2YWx1ZVwiOlwiQTU3NjRmYTZjLTk3NDgtNDk2MS1hMGYxLWEwNWVlOTE4M2MxOFwiLFwiZXNzZW50aWFsXCI6dHJ1ZX19LFwidXNlcmluZm9cIjp7XCJvcGVuYmFua2luZ19pbnRlbnRfaWRcIjp7XCJ2YWx1ZVwiOlwiQTU3NjRmYTZjLTk3NDgtNDk2MS1hMGYxLWEwNWVlOTE4M2MxOFwiLFwiZXNzZW50aWFsXCI6dHJ1ZX19fSIsInJlYWxtIjoiL29wZW5iYW5raW5nIiwiZXhwIjoxNTM3Nzg1MTc4LCJpYXQiOjE1Mzc2OTg3NzgsImV4cGlyZXNfaW4iOjg2NDAwLCJqdGkiOiJhNTNlM2RlZi1iZTA0LTQxYjItODU2OC05Njg5NGJiNjdhMTkifQ.IrC8XfYgUh3SP9LIDUGodQZZEz_STs_LHC1Kg_-3qUsOFqQK9wvnuMNB-HqbAoGWFxTHFECliXdIq4ynvPfb1w"
+    url = "https://rs.aspsp.ob.forgerock.financial:443/open-banking/v1.1/accounts/"+accountid+"/balances"
+    headers = {
+        'Authorization': "Bearer "+accesstoken+"",
+        'Content-Type': "application/json",
+        'x-idempotency-key': "FRESCO.21302.GFX.20",
+        'x-fapi-financial-id': "0015800001041REAAY",
+        'x-fapi-customer-last-logged-time': "Sun, 10 Sep 2017 19:43:31 UTC",
+        'x-fapi-customer-ip-address': "104.25.212.99",
+        'x-fapi-interaction-id': "93bac548-d2de-4546-b106-880a5018460d",
+        'Accept': "application/json",
+        'Cache-Control': "no-cache",
+        'Postman-Token': "7d10028d-796f-4c74-8252-a02561c93744"
+        }
+
+    response = make_request("get", url, headers=headers)
+
+    print(response)
+
+    return (response)
+
+def make_payment(accesstoken,amount):
+    url = "https://rs.aspsp.ob.forgerock.financial:443/open-banking/v1.1/payments"
+
+    payload = "{\n  \"Data\": {\n    \"Initiation\": {\n      \"InstructionIdentification\": \"ACME412\",\n      \"EndToEndIdentification\": \"FRESCO.21302.GFX.20\",\n      \"InstructedAmount\": {\n        \"Amount\": \""+amount+"\",\n        \"Currency\": \"GBP\"\n      },\n      \"CreditorAccount\": {\n        \"SchemeName\": \"SortCodeAccountNumber\",\n        \"Identification\": \"08080021325698\",\n        \"Name\": \"ACME Inc\",\n        \"SecondaryIdentification\": \"0002\"\n      },\n      \"RemittanceInformation\": {\n        \"Reference\": \"FRESCO-101\",\n        \"Unstructured\": \"Internal ops code 5120101\"\n      }\n    }\n  },\n  \"Risk\": {\n    \"PaymentContextCode\": \"EcommerceGoods\",\n    \"MerchantCategoryCode\": \"5967\",\n    \"MerchantCustomerIdentification\": \"053598653254\",\n    \"DeliveryAddress\": {\n      \"AddressLine\": [\n        \"Flat 7\",\n        \"Acacia Lodge\"\n      ],\n      \"StreetName\": \"Acacia Avenue\",\n      \"BuildingNumber\": \"27\",\n      \"PostCode\": \"GU31 2ZZ\",\n      \"TownName\": \"Sparsholt\",\n      \"CountySubDivision\": [\n        \"Wessex\"\n      ],\n      \"Country\": \"UK\"\n    }\n  }\n}"
+    headers = {
+        'Authorization': "Bearer "+accesstoken,
+        'Content-Type': "application/json",
+        'x-idempotency-key': "FRESCO.21302.GFX.20",
+        'x-fapi-financial-id': "0015800001041REAAY",
+        'x-fapi-customer-last-logged-time': "Sun, 10 Sep 2017 19:43:31 UTC",
+        'x-fapi-customer-ip-address': "104.25.212.99",
+        'x-fapi-interaction-id': "93bac548-d2de-4546-b106-880a5018460d",
+        'Accept': "application/json",
+        'Cache-Control': "no-cache",
+        'Postman-Token': "e8d2b9dd-1508-47db-8ac5-81ba90f63724"
+    }
+
+    response = make_request("post", url, payload=payload, headers=headers)
+    

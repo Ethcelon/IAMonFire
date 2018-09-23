@@ -5,8 +5,8 @@ import json
 from db import bootstrap_db, save_nonce, validate_nonce, save_account
 
 from helpers import create_account_request_and_give_me_hybrid_request
-from helpers import exchange_code_for_token
-from db import write_account_token_to_db
+from helpers import exchange_code_for_token, get_balance
+from db import write_account_token_to_db, read_account_token_from_db, get_accounts
 
 bootstrap_db()
 
@@ -31,15 +31,34 @@ def login():
 def serve_html(path):
     return send_from_directory('html', path)
 
-@app.route('/user/accounts')
-def get_accounts():
-    return jsonify(['one', 'two']), 200
+# @app.route('/user/accounts')
+# def get_accounts():
+#     return jsonify(['one', 'two']), 200
 
 @app.route('/auction/makebid', methods=['POST'])
 def parse_bid():
     if request.method == 'POST':
         print(request.form)
-    return jsonify({"success" : "True"}), 200
+
+    accesstoken = read_account_token_from_db()   
+    account_keypair = get_accounts("om2")
+
+    accountid = account_keypair[request.form.get('selectedAccount')]
+
+    bidamount = request.form.get('bidAmount')
+
+    print(request.form.get('selectedAccount'))
+    print(request.form.get('bidAmount'))
+
+    balance = get_balance(accountid,accesstoken)
+
+    if balance < bidamount:
+        print ("You don't have the money dude!")
+        return jsonify({"bidStatus" : "Forbidden"}), 403
+    else:
+        return jsonify({"bidStatus" : "Success"}), 200
+
+    
 
 @app.route('/oauth2/capture')
 def capture_oauth2():
@@ -107,7 +126,13 @@ def accounts():
                   json_data.append(i['Amount'])
             
     return (str(json_data))
-    
+
+
+
+# @app.route('/test', methods=['GET'])
+# def test():
+#     test = get_balance(,,)
+#     return (str(test))
 
 
 if __name__ == "__main__":
